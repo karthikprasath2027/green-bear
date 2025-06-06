@@ -1,0 +1,8 @@
+name: 🫸
+on: push
+jobs:
+  printer:
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo
+      run: echo " 😒 "
