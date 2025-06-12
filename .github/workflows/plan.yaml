@@ -25,15 +25,22 @@ jobs:
           aws-secret-access-key: ${{ secrets.SECRET_KEY }}
           aws-region: ap-northeast-1
 
-      - name: Terraform Init
-        run: terraform init
+      # - name: Terraform Init
+      #   run: terraform init
 
-      - name: Terraform Plan
-        run: terraform plan
+      # - name: Terraform Plan
+      #   run: terraform plan
+      - name: Terraform show
+        run: terraform show
+
+
+
+      # - name: Terraform Plan
+      #   run: terraform plan
 
         
-      - name: Terraform apply 😘
-        run: terraform apply --auto-approve
+      # - name: Terraform apply 😘
+      #   run: terraform apply --auto-approve
 
         
         
