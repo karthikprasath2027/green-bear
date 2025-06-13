@@ -33,7 +33,7 @@ jobs:
       - name: Terraform show with debug
         run: |
           export TF_LOG=TRACE
-          export TF_LOG_PATH=~/debug.log
+          # export TF_LOG_PATH=~/debug.log
           terraform show
 
 
