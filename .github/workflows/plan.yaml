@@ -32,7 +32,7 @@ jobs:
         run: terraform plan
       - name: Terraform show with debug
         run: |
-          # export TF_LOG=TRACE
+          export TF_LOG=TRACE
           export TF_LOG_PATH=~/debug.log
           cat ~/debug.log
 
