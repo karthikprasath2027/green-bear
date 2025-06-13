@@ -27,11 +27,14 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-
+      
       - name: Terraform Plan
         run: terraform plan
-      - name: Terraform show
-        run: terraform show
+      - name: Terraform show with debug
+        run: |
+          export TF_LOG=TRACE
+          export TF_LOG_PATH=~/debug.log
+          terraform show
 
 
 
@@ -39,10 +42,10 @@ jobs:
       #   run: terraform plan
 
         
-      # - name: Terraform apply 😘
-      #   run: terraform apply --auto-approve
+      - name: Terraform apply 😉
+        run: terraform apply --auto-approve
 
-        
+      
         
       # - name: Terraform destroy 🔪
       #   run: terraform destroy --auto-approve
