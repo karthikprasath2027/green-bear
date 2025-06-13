@@ -23,10 +23,10 @@ resource "aws_security_group" "ssh" {
 
   dynamic "ingress" {
     for_each = var.ingress_port
-
+    iterator = "port"
     content {
-      from_port   = ingress.value
-      to_port     = ingress.value
+      from_port   = port.value
+      to_port     = port.value
       protocol    = "tcp"
       cidr_blocks = var.internet_IP
     }
@@ -35,10 +35,10 @@ resource "aws_security_group" "ssh" {
 
   dynamic "egress" {
     for_each = var.egress_port
-
+    iterator = "port"
     content {
-      from_port   = egress.value
-      to_port     = egress.value
+      from_port   = port.value
+      to_port     = port.value
       protocol    = "tcp"
       cidr_blocks = var.internet_IP
     }
