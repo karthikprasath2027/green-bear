@@ -21,34 +21,34 @@ resource "aws_security_group" "ssh" {
   vpc_id      = data.aws_vpc.default.id
 
 
-dynamic "ingress" {
-for_each = var.ingress_port
+  dynamic "ingress" {
+    for_each = var.ingress_port
 
-content {
-    from_port   = ingress.value
-    to_port     = ingress.value
-    protocol    = "tcp"
-    cidr_blocks = var.internet_IP
-}
-}
+    content {
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = var.internet_IP
+    }
+  }
 
 
-dynamic "egress" {
-for_each = var.egress_port
+  dynamic "egress" {
+    for_each = var.egress_port
 
-content {
-    from_port   = egress.value
-    to_port     = egress.value
-    protocol    = "tcp"
-    cidr_blocks = var.internet_IP
-}
-}
+    content {
+      from_port   = egress.value
+      to_port     = egress.value
+      protocol    = "tcp"
+      cidr_blocks = var.internet_IP
+    }
+  }
 
   # ingress {
-    # from_port   = 22
-    # to_port     = 22
-    # protocol    = "tcp"
-    # cidr_blocks = var.internet_IP
+  # from_port   = 22
+  # to_port     = 22
+  # protocol    = "tcp"
+  # cidr_blocks = var.internet_IP
   # }
 
   # egress {
@@ -60,9 +60,9 @@ content {
 }
 
 resource "aws_instance" "EC2" {
-  ami                    = "ami-05b8c5705ba972d30"
-  instance_type          = "t2.micro"
-  security_groups        = [aws_security_group.ssh.name]
+  ami             = "ami-05b8c5705ba972d30"
+  instance_type   = "t2.micro"
+  security_groups = [aws_security_group.ssh.name]
 
   tags = {
     Name = "MyTerraformVM"

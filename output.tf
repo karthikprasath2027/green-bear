@@ -4,5 +4,5 @@ output "ec2_id" {
 
 
 output "ec2_all" {
-    value = aws_instance.EC2
+  value = aws_instance.EC2
 }
