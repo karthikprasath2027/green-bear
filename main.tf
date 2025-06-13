@@ -20,19 +20,43 @@ resource "aws_security_group" "ssh" {
   description = "Allow SSH inbound traffic"
   vpc_id      = data.aws_vpc.default.id
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
+
+dynamic "ingress" {
+for_each = var.ingress_port
+
+content {
+    from_port   = ingress.value
+    to_port     = ingress.value
     protocol    = "tcp"
     cidr_blocks = var.internet_IP
-  }
+}
+}
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+
+dynamic "egress" {
+for_each = var.egress_port
+
+content {
+    from_port   = egress.value
+    to_port     = egress.value
+    protocol    = "tcp"
     cidr_blocks = var.internet_IP
-  }
+}
+}
+
+  # ingress {
+    # from_port   = 22
+    # to_port     = 22
+    # protocol    = "tcp"
+    # cidr_blocks = var.internet_IP
+  # }
+
+  # egress {
+  #   from_port   = 0
+  #   to_port     = 0
+  #   protocol    = "-1"
+  #   cidr_blocks = var.internet_IP
+  # }
 }
 
 resource "aws_instance" "EC2" {

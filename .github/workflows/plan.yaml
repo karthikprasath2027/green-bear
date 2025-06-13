@@ -30,11 +30,10 @@ jobs:
       
       - name: Terraform Plan
         run: terraform plan
-      - name: Terraform show with debug
+      - name: Terraform fmt & validate
         run: |
-          export TF_LOG=TRACE
-          export TF_LOG_PATH=~/debug.log
-          cat ~/debug.log
+          Terraform fmt
+          Terraform validate
 
 
 
