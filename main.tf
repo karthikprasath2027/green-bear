@@ -23,7 +23,7 @@ resource "aws_security_group" "ssh" {
 
   dynamic "ingress" {
     for_each = var.ingress_port
-    iterator = "port"
+    iterator = port
     content {
       from_port   = port.value
       to_port     = port.value
@@ -35,7 +35,7 @@ resource "aws_security_group" "ssh" {
 
   dynamic "egress" {
     for_each = var.egress_port
-    iterator = "port"
+    iterator = port
     content {
       from_port   = port.value
       to_port     = port.value
