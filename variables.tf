@@ -3,12 +3,12 @@ variable "internet_IP" {
 }
 
 variable "ingress_port" {
-  type = list()
+  type = list(number)
   default = [22,80,443]
 }
 
 
 variable "egress_port" {
-  type = list()
+  type = list(number)
   default = [0,8080]
 }
