@@ -62,7 +62,7 @@ resource "aws_security_group" "ssh" {
 resource "aws_instance" "EC2" {
   ami             = "ami-05b8c5705ba972d30"
   instance_type   = "t2.micro"
-  key_name = "tokyo.pem"
+  key_name = "tokyo"
   security_groups = [aws_security_group.ssh.name]
 
 
