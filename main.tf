@@ -57,7 +57,7 @@ resource "aws_instance" "EC2" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file("tokyo")  # <-- replace with correct private key path
+      private_key = file("tokyo.pem")  # <-- replace with correct private key path
       host        = self.public_ip
     }
   }
