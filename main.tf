@@ -64,6 +64,12 @@ resource "aws_instance" "EC2" {
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.ssh.name]
 
+
+provisioner "file" {
+  source = "1to100"
+  destination = "/var/copy-file"
+}
+
   tags = {
     Name = "MyTerraformVM"
   }
