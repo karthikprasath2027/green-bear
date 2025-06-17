@@ -11,21 +11,6 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
-# Define variables inline (you can move these to variables.tf if desired)
-variable "ingress_port" {
-  type    = list(number)
-  default = [22]
-}
-
-variable "egress_port" {
-  type    = list(number)
-  default = [80, 443]
-}
-
-variable "internet_IP" {
-  type    = list(string)
-  default = ["0.0.0.0/0"]
-}
 
 data "aws_vpc" "default" {
   default = true
