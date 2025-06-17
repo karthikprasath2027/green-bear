@@ -50,17 +50,17 @@ resource "aws_instance" "EC2" {
   key_name      = "tokyo"  # <-- replace this with your actual EC2 key pair name
   vpc_security_group_ids = [aws_security_group.ssh.id]
 
-  provisioner "file" {
-    source      = "1to100"
-    destination = "/var/copy-file"
+  # provisioner "file" {
+  #   source      = "1to100"
+  #   destination = "/var/copyfile"
 
-    connection {
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = file("tokyo.pem")  # <-- replace with correct private key path
-      host        = self.public_ip
-    }
-  }
+  #   connection {
+  #     type        = "ssh"
+  #     user        = "ec2-user"
+  #     private_key = file("tokyo.pem")  # <-- replace with correct private key path
+  #     host        = self.public_ip
+  #   }
+  # }
 
   tags = {
     Name = "MyTerraformVM"
